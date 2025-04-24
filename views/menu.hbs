@@ -1,0 +1,21 @@
+<section class="menu-page">
+    <div class="container">
+        <h1>Our Menu</h1>
+        
+        {{#each categories}}
+        <div class="menu-category">
+            <h2>{{this.name}}</h2>
+            <div class="menu-items">
+                {{#each items}}
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>{{this.name}}</h3>
+                        {{!-- <span class="price">£{{this.price}}</span> --}}
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</section>

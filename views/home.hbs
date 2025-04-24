@@ -1,0 +1,51 @@
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>{{hero.title}}</h1>
+        <p>{{hero.subtitle}}</p>
+        <div class="hero-buttons">
+            <a href="/reservations" class="btn btn-primary">Reserve a Table</a>
+            <a href="/menu" class="btn btn-secondary">View Menu</a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        {{#each features}}
+        <div class="feature-card">
+            <h3>{{this.title}}</h3>
+            <p>{{this.description}}</p>
+        </div>
+        {{/each}}
+    </div>
+</section>
+
+<!-- Specialties Section -->
+<section class="specialties">
+    <div class="container">
+        <h2>Seasonal Specialties</h2>
+        <div class="specialties-grid">
+            {{#each specialties}}
+            <div class="specialty-card">
+                <div class="specialty-image" style="background-image: url('{{this.image}}')"></div>
+                <div class="specialty-content">
+                    <h3>{{this.title}}</h3>
+                    <p>{{this.description}}</p>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+
+<!-- Testimonial Section -->
+<section class="testimonial">
+    <div class="container">
+        <blockquote>
+            "An extraordinary dining experience that transcends the ordinary. Every dish tells a story of passion and precision."
+        </blockquote>
+        <cite>— The Culinary Guide, 2025</cite>
+    </div>
+</section>

@@ -1,0 +1,31 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6">
+    <div class="card shadow">
+      <div class="card-body">
+        <h3 class="card-title text-center mb-4">Login to Your Account</h3>
+
+        <form action="/auth/login" method="post">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{email}}" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+
+          <div class="mb-3 text-end">
+            <a href="/auth/forgot-password" class="text-decoration-none">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
+          
+          <div class="text-center">
+            <p>Don't have an account? <a href="/auth/register" class="text-decoration-none">Register here</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow">
+      <div class="card-body">
+        <h3 class="card-title text-center mb-4">Reservation Details</h3>
+        
+        <div class="reservation-progress mb-4">
+          <div class="d-flex justify-content-between">
+            <div class="progress-step completed text-center">
+              <div class="step-number bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width: 40px; height: 40px;"><i class="bi bi-check"></i></div>
+              <div>Date & Party Size</div>
+            </div>
+            <div class="progress-step completed text-center">
+              <div class="step-number bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width: 40px; height: 40px;"><i class="bi bi-check"></i></div>
+              <div>Time</div>
+            </div>
+            <div class="progress-step active text-center">
+              <div class="step-number bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width: 40px; height: 40px;">3</div>
+              <div>Details</div>
+            </div>
+          </div>
+          <div class="progress mt-2" style="height: 5px;">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+
+        <div class="reservation-summary p-3 mb-4 bg-light rounded">
+          <h5 class="mb-3">Reservation Summary</h5>
+          <div class="row">
+            <div class="col-md-4">
+              <p class="mb-1"><strong>Date:</strong></p>
+              <p>{{formattedDate}}</p>
+            </div>
+            <div class="col-md-4">
+              <p class="mb-1"><strong>Time:</strong></p>
+              <p>{{formattedTime}}</p>
+            </div>
+            <div class="col-md-4">
+              <p class="mb-1"><strong>Party Size:</strong></p>
+              <p>{{reservationData.numberOfGuests}} {{#ifEquals reservationData.numberOfGuests 1}}person{{else}}people{{/ifEquals}}</p>
+            </div>
+          </div>
+        </div>
+
+        {{#if user}}
+          <form action="/reservations/confirm" method="post">
+            <div class="mb-3">
+              <label for="occasion" class="form-label">Special Occasion (Optional)</label>
+              <select class="form-select" id="occasion" name="occasion">
+                <option value="">None</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Anniversary">Anniversary</option>
+                <option value="Engagement">Engagement</option>
+                <option value="Business">Business Dinner</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="dietaryRequirements" class="form-label">Dietary Requirements (Optional)</label>
+              <textarea class="form-control" id="dietaryRequirements" name="dietaryRequirements" rows="2" placeholder="Please list any allergies or dietary restrictions"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="specialRequests" class="form-label">Special Requests (Optional)</label>
+              <textarea class="form-control" id="specialRequests" name="specialRequests" rows="3" placeholder="Any special requests or preferences"></textarea>
+              <div class="form-text">We will do our best to accommodate your requests, but cannot guarantee all requests can be fulfilled.</div>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <a href="javascript:history.back()" class="btn btn-outline-secondary">Back</a>
+              <button type="submit" class="btn btn-primary">Confirm Reservation</button>
+            </div>
+          </form>
+        {{else}}
+          <div class="alert alert-info">
+            <h5>Please log in to complete your reservation</h5>
+            <p>You need to be logged in to make a reservation. Your reservation details will be saved.</p>
+            <div class="d-flex gap-2 mt-3">
+              <a href="/auth/login" class="btn btn-primary">Login</a>
+              <a href="/auth/register" class="btn btn-outline-primary">Register</a>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

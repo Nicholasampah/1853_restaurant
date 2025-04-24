@@ -1,0 +1,62 @@
+<section class="reservations-page">
+    <div class="container">
+        <h1>Make a Reservation</h1>
+        
+        {{#if error}}
+        <div class="alert alert-danger">{{error}}</div>
+        {{/if}}
+        
+        <form class="reservation-form" method="post" action="reservations">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required value="{{formData.name}}">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required value="{{formData.email}}">
+            </div>
+            
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" required value="{{formData.date}}">
+            </div>
+            
+            <div class="form-group">
+                <label for="time">Time</label>
+                <input type="time" id="time" name="time" required value="{{formData.time}}">
+            </div>
+            
+            <div class="form-group">
+                <label for="guests">Number of Guests</label>
+                <select id="guests" name="guests" required>
+                    <option value="">Select number of guests</option>
+                    <option value="1" {{#if (eq formData.guests "1")}}selected{{/if}}>1 Guest</option>
+                    <option value="2" {{#if (eq formData.guests "2")}}selected{{/if}}>2 Guests</option>
+                    <option value="3" {{#if (eq formData.guests "3")}}selected{{/if}}>3 Guests</option>
+                    <option value="4" {{#if (eq formData.guests "4")}}selected{{/if}}>4 Guests</option>
+                    <option value="5" {{#if (eq formData.guests "5")}}selected{{/if}}>5 Guests</option>
+                    <option value="6" {{#if (eq formData.guests "6")}}selected{{/if}}>6 Guests</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="occasion">Occasion (Optional)</label>
+                <input type="text" id="occasion" name="occasion" value="{{formData.occasion}}">
+            </div>
+            
+            <div class="form-group">
+                <label for="dietary-requirements">Dietary Requirements (Optional)</label>
+                <textarea id="dietary-requirements" name="dietary-requirements">{{formData.dietary-requirements}}</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="special-requests">Special Requests (Optional)</label>
+                <textarea id="special-requests" name="special-requests">{{formData.special-requests}}</textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Make Reservation</button>
+        </form>
+    </div>
+</section>
+<script src="/javascript/script2.js"></script>

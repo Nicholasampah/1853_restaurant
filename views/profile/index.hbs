@@ -1,0 +1,163 @@
+<div class="row">
+  <div class="col-md-3">
+    <div class="card shadow mb-4">
+      <div class="card-body text-center">
+        <div class="mb-3">
+          <i class="bi bi-person-circle" style="font-size: 5rem;"></i>
+        </div>
+        <h5 class="card-title">{{user.firstName}} {{user.lastName}}</h5>
+        <p class="text-muted">{{user.email}}</p>
+        <div class="d-grid gap-2">
+          <a href="/profile/edit" class="btn btn-outline-primary">
+            <i class="bi bi-pencil-square"></i> Edit Profile
+          </a>
+          <a href="/profile/change-password" class="btn btn-outline-secondary">
+            <i class="bi bi-key"></i> Change Password
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card shadow">
+      <div class="card-body">
+        <h5 class="card-title">Quick Links</h5>
+        <div class="list-group list-group-flush">
+          <a href="/reservations" class="list-group-item list-group-item-action">
+            <i class="bi bi-calendar-plus me-2"></i> New Reservation
+          </a>
+          <a href="/menu" class="list-group-item list-group-item-action">
+            <i class="bi bi-journal-text me-2"></i> View Menu
+          </a>
+          <a href="/contact" class="list-group-item list-group-item-action">
+            <i class="bi bi-chat-left-text me-2"></i> Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="card shadow mb-4">
+      <div class="card-header">
+        <h4 class="mb-0">My Reservations</h4>
+      </div>
+      <div class="card-body">
+        <ul class="nav nav-tabs mb-4" id="reservationTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="true">
+              Upcoming ({{upcomingReservations.length}})
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false">
+              Past Reservations ({{pastReservations.length}})
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="reservationTabsContent">
+          <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+            {{#if upcomingReservations.length}}
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Party Size</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each upcomingReservations}}
+                      <tr>
+                        <td>{{formatDate this.date "MMM D, YYYY"}}</td>
+                        <td>{{formatTime this.time "h:mm A"}}</td>
+                        <td>{{this.numberOfGuests}} {{#ifEquals this.numberOfGuests 1}}person{{else}}people{{/ifEquals}}</td>
+                        <td>
+                          {{#ifEquals this.status "PENDING"}}
+                            <span class="badge bg-warning">Pending</span>
+                          {{/ifEquals}}
+                          {{#ifEquals this.status "CONFIRMED"}}
+                            <span class="badge bg-success">Confirmed</span>
+                          {{/ifEquals}}
+                        </td>
+                        <td>
+                          <div class="btn-group">
+                            <a href="/profile/reservations/{{this.id}}" class="btn btn-sm btn-outline-primary">
+                              <i class="bi bi-eye"></i> View
+                            </a>
+                            {{#ifCond this.status "==" "PENDING"}}
+                              <form action="/profile/reservations/{{this.id}}/cancel" method="post" onsubmit="return confirm('Are you sure you want to cancel this reservation?');" class="d-inline">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                  <i class="bi bi-x-circle"></i> Cancel
+                                </button>
+                              </form>
+                            {{/ifCond}}
+                          </div>
+                        </td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            {{else}}
+              <div class="alert alert-info">
+                <p class="mb-0">You don't have any upcoming reservations.</p>
+                <a href="/reservations" class="btn btn-primary mt-2">Make a Reservation</a>
+              </div>
+            {{/if}}
+          </div>
+
+          <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
+            {{#if pastReservations.length}}
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Party Size</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each pastReservations}}
+                      <tr>
+                        <td>{{formatDate this.date "MMM D, YYYY"}}</td>
+                        <td>{{formatTime this.time "h:mm A"}}</td>
+                        <td>{{this.numberOfGuests}} {{#ifEquals this.numberOfGuests 1}}person{{else}}people{{/ifEquals}}</td>
+                        <td>
+                          {{#ifEquals this.status "COMPLETED"}}
+                            <span class="badge bg-primary">Completed</span>
+                          {{/ifEquals}}
+                          {{#ifEquals this.status "CANCELLED"}}
+                            <span class="badge bg-danger">Cancelled</span>
+                          {{/ifEquals}}
+                          {{#ifEquals this.status "NO_SHOW"}}
+                            <span class="badge bg-secondary">No Show</span>
+                          {{/ifEquals}}
+                        </td>
+                        <td>
+                          <a href="/profile/reservations/{{this.id}}" class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-eye"></i> View
+                          </a>
+                        </td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            {{else}}
+              <div class="alert alert-info">
+                <p class="mb-0">You don't have any past reservations.</p>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

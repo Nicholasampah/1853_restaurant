@@ -1,0 +1,118 @@
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">Reservation Details</h4>
+        <a href="/profile" class="btn btn-sm btn-outline-secondary">
+          <i class="bi bi-arrow-left"></i> Back to Profile
+        </a>
+      </div>
+      <div class="card-body">
+        <div class="reservation-status mb-4 text-center">
+          {{#ifEquals reservation.status "PENDING"}}
+            <div class="badge bg-warning p-2 fs-5 d-inline-block">Pending Confirmation</div>
+          {{/ifEquals}}
+          {{#ifEquals reservation.status "CONFIRMED"}}
+            <div class="badge bg-success p-2 fs-5 d-inline-block">Confirmed</div>
+          {{/ifEquals}}
+          {{#ifEquals reservation.status "COMPLETED"}}
+            <div class="badge bg-primary p-2 fs-5 d-inline-block">Completed</div>
+          {{/ifEquals}}
+          {{#ifEquals reservation.status "CANCELLED"}}
+            <div class="badge bg-danger p-2 fs-5 d-inline-block">Cancelled</div>
+          {{/ifEquals}}
+          {{#ifEquals reservation.status "NO_SHOW"}}
+            <div class="badge bg-secondary p-2 fs-5 d-inline-block">No Show</div>
+          {{/ifEquals}}
+        </div>
+
+        <div class="reservation-details p-4 mb-4 bg-light rounded">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <p class="mb-1"><strong>Confirmation Code:</strong></p>
+              <p class="fs-5">{{reservation.confirmationCode}}</p>
+            </div>
+            <div class="col-md-6">
+              <p class="mb-1"><strong>Reserved On:</strong></p>
+              <p>{{formatDate reservation.created_at "MMM D, YYYY, h:mm A"}}</p>
+            </div>
+          </div>
+          
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <p class="mb-1"><strong>Date:</strong></p>
+              <p>{{formatDate reservation.date "dddd, MMMM D, YYYY"}}</p>
+            </div>
+            <div class="col-md-6">
+              <p class="mb-1"><strong>Time:</strong></p>
+              <p>{{formatTime reservation.time "h:mm A"}}</p>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <p class="mb-1"><strong>Party Size:</strong></p>
+              <p>{{reservation.numberOfGuests}} {{#ifEquals reservation.numberOfGuests 1}}person{{else}}people{{/ifEquals}}</p>
+            </div>
+            <div class="col-md-6">
+              <p class="mb-1"><strong>Table:</strong></p>
+              <p>Table {{reservation.tableNumber}} ({{reservation.location}})</p>
+            </div>
+          </div>
+
+          {{#if reservation.occasion}}
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <p class="mb-1"><strong>Special Occasion:</strong></p>
+                <p>{{reservation.occasion}}</p>
+              </div>
+            </div>
+          {{/if}}
+          
+          {{#if reservation.dietaryRequirements}}
+            <div class="row mb-3">
+              <div class="col-12">
+                <p class="mb-1"><strong>Dietary Requirements:</strong></p>
+                <p>{{reservation.dietaryRequirements}}</p>
+              </div>
+            </div>
+          {{/if}}
+          
+          {{#if reservation.specialRequests}}
+            <div class="row mb-3">
+              <div class="col-12">
+                <p class="mb-1"><strong>Special Requests:</strong></p>
+                <p>{{reservation.specialRequests}}</p>
+              </div>
+            </div>
+          {{/if}}
+        </div>
+        
+        <div class="reservation-actions">
+          {{#ifCond reservation.status "==" "PENDING"}}
+            <form action="/profile/reservations/{{reservation.id}}/cancel" method="post" onsubmit="return confirm('Are you sure you want to cancel this reservation?');" class="d-inline">
+              <button type="submit" class="btn btn-danger">Cancel Reservation</button>
+            </form>
+          {{/ifCond}}
+          
+          {{#ifCond reservation.status "==" "CONFIRMED"}}
+            <div class="alert alert-info mb-3">
+              <p class="mb-0"><i class="bi bi-info-circle me-2"></i> If you need to modify your reservation, please contact us at (+44) 123-4567-890.</p>
+            </div>
+            <form action="/profile/reservations/{{reservation.id}}/cancel" method="post" onsubmit="return confirm('Are you sure you want to cancel this reservation?');" class="d-inline">
+              <button type="submit" class="btn btn-danger">Cancel Reservation</button>
+            </form>
+          {{/ifCond}}
+          
+          {{#ifCond reservation.status "==" "COMPLETED"}}
+            <a href="/reservations" class="btn btn-primary">Make Another Reservation</a>
+          {{/ifCond}}
+          
+          {{#ifCond reservation.status "==" "CANCELLED"}}
+            <a href="/reservations" class="btn btn-primary">Make New Reservation</a>
+          {{/ifCond}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

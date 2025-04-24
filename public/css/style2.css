@@ -1,0 +1,121 @@
+/* Global Styles */
+:root {
+  --primary-color: #a87d4e;
+  --secondary-color: #212529;
+  --accent-color: #d4af37;
+}
+
+/* body {
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  background-color: #f8f9fa;
+} */
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #8e6a42;
+  border-color: #8e6a42;
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+/* Navigation */
+/* .navbar-dark {
+  background-color: var(--secondary-color) !important;
+}*/
+
+.navbar-brand {
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+} 
+
+/* Footer */
+.footer {
+  background-color: var(--secondary-color) !important;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+.footer h5 {
+  color: var(--accent-color);
+  font-family: "Playfair Display", serif;
+  margin-bottom: 1.5rem;
+}
+
+.social-icons a {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+
+
+/* Reservation Pages */
+.progress-step {
+  position: relative;
+  z-index: 1;
+}
+
+.progress-step.completed .step-number {
+  background-color: #28a745 !important;
+}
+
+.progress-step.active .step-number {
+  background-color: var(--primary-color) !important;
+}
+
+.time-slots .btn {
+  padding: 0.75rem 0;
+}
+
+.time-slots .btn-check:checked + .btn-outline-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .welcome-section,
+  .featured-section,
+  .testimonials-section {
+    padding: 2rem 0;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+
+  .reservation-progress .step-number {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 0.8rem;
+  }
+
+  .progress-step div:last-child {
+    font-size: 0.8rem;
+  }
+}
+
+/* Add Google Fonts imports */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap");

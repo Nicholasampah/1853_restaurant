@@ -1,0 +1,85 @@
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow">
+      <div class="card-body text-center">
+        <div class="confirmation-icon mb-3">
+          <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
+        </div>
+        <h2 class="card-title mb-3">Reservation Confirmed!</h2>
+        <p class="lead mb-4">We look forward to serving you on {{formattedDate}}</p>
+        
+        <div class="reservation-details p-4 mb-4 bg-light rounded text-start">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <p class="mb-1"><strong>Confirmation Code:</strong></p>
+              <p class="fs-5">{{reservation.confirmationCode}}</p>
+            </div>
+            <div class="col-md-6">
+              <p class="mb-1"><strong>Status:</strong></p>
+              <p><span class="badge bg-success">{{reservation.status}}</span></p>
+            </div>
+          </div>
+          
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <p class="mb-1"><strong>Date & Time:</strong></p>
+              <p>{{formattedDate}} at {{formatTime reservation.time "h:mm A"}}</p>
+            </div>
+            <div class="col-md-6">
+              <p class="mb-1"><strong>Party Size:</strong></p>
+              <p>{{reservation.numberOfGuests}} {{#ifEquals reservation.numberOfGuests 1}}person{{else}}people{{/ifEquals}}</p>
+            </div>
+          </div>
+          
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <p class="mb-1"><strong>Table:</strong></p>
+              <p>Table {{reservation.tableNumber}} ({{reservation.location}})</p>
+            </div>
+            <div class="col-md-6">
+              <p class="mb-1"><strong>Reserved By:</strong></p>
+              <p>{{reservation.firstName}} {{reservation.lastName}}</p>
+            </div>
+          </div>
+          
+          {{#if reservation.occasion}}
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <p class="mb-1"><strong>Special Occasion:</strong></p>
+                <p>{{reservation.occasion}}</p>
+              </div>
+            </div>
+          {{/if}}
+          
+          {{#if reservation.dietaryRequirements}}
+            <div class="row mb-3">
+              <div class="col-12">
+                <p class="mb-1"><strong>Dietary Requirements:</strong></p>
+                <p>{{reservation.dietaryRequirements}}</p>
+              </div>
+            </div>
+          {{/if}}
+          
+          {{#if reservation.specialRequests}}
+            <div class="row mb-3">
+              <div class="col-12">
+                <p class="mb-1"><strong>Special Requests:</strong></p>
+                <p>{{reservation.specialRequests}}</p>
+              </div>
+            </div>
+          {{/if}}
+        </div>
+        
+        <div class="confirmation-message mb-4">
+          <p>A confirmation email has been sent to <strong>{{reservation.email}}</strong>.</p>
+          <p>You can view or manage your reservation from your profile page.</p>
+        </div>
+        
+        <div class="confirmation-actions">
+          <a href="/profile" class="btn btn-primary me-2">Go to My Profile</a>
+          <a href="/" class="btn btn-outline-secondary">Return to Homepage</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

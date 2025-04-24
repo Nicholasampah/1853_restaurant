@@ -1,0 +1,55 @@
+<section class="search-page">
+    <div class="container">
+        <h1>Recipe Search</h1>
+        <form class="search-form" action="/search" method="GET">
+            <div class="form-group">
+                <label for="meal">Search for a Recipe</label>
+                <input type="text" id="meal" name="meal" placeholder="Enter a meal name..." required>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+
+        {{#if error}}
+            <div class="error-message">
+                {{error}}
+            </div>
+        {{/if}}
+
+        {{#if meals}}
+            <div class="search-results">
+                {{#each meals}}
+                    <div class="recipe-card">
+                        <div class="recipe-image">
+                            <img src="{{this.strMealThumb}}" alt="{{this.strMeal}}" style="width: 20%;">
+                        </div>
+                        <div class="recipe-content">
+                            <h2>{{this.strMeal}}</h2>
+                            <p class="category">Category: {{this.strCategory}}</p>
+                            <p class="area">Cuisine: {{this.strArea}}</p>
+                            <div class="recipe-instructions">
+                                <h3>Instructions:</h3>
+                                <p>{{this.strInstructions}}</p>
+                            </div>
+                            <div class="ingredients">
+                                <h3>Ingredients:</h3>
+                                <ul>
+                                    {{#if this.strIngredient1}}<li>{{this.strMeasure1}} {{this.strIngredient1}}</li>{{/if}}
+                                    {{#if this.strIngredient2}}<li>{{this.strMeasure2}} {{this.strIngredient2}}</li>{{/if}}
+                                    {{#if this.strIngredient3}}<li>{{this.strMeasure3}} {{this.strIngredient3}}</li>{{/if}}
+                                    {{#if this.strIngredient4}}<li>{{this.strMeasure4}} {{this.strIngredient4}}</li>{{/if}}
+                                    {{#if this.strIngredient5}}<li>{{this.strMeasure5}} {{this.strIngredient5}}</li>{{/if}}
+                                    {{#if this.strIngredient6}}<li>{{this.strMeasure6}} {{this.strIngredient6}}</li>{{/if}}
+                                    {{#if this.strIngredient7}}<li>{{this.strMeasure7}} {{this.strIngredient7}}</li>{{/if}}
+                                    {{#if this.strIngredient8}}<li>{{this.strMeasure8}} {{this.strIngredient8}}</li>{{/if}}
+                                    {{#if this.strIngredient9}}<li>{{this.strMeasure9}} {{this.strIngredient9}}</li>{{/if}}
+                                    {{#if this.strIngredient10}}<li>{{this.strMeasure10}} {{this.strIngredient10}}</li>{{/if}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        {{/if}}
+        <br><hr>
+    </div>
+</section>

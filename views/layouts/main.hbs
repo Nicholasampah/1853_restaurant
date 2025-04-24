@@ -1,0 +1,90 @@
+{{!-- <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/style.css" >
+    <link rel="stylesheet" href="/css/style2.css" >
+
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <div class="logo">
+          <a href="/">1853</a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/menu">Menu</a></li>
+          <li><a href="/reservations">Reservations</a></li>
+          <li><a href="/search">Recipe Guide</a></li>
+          <li><a href="http://localhost/1853_restaurant/admin_portal/admin/dashboard.php" target="_blank">Admin Portal</a></li>
+          
+          <div class="auth-links">
+            {{#if user}}
+              <a href="/account">My Account</a>
+              <a href="/logout">Logout</a>
+            {{else}}
+              <a href="/auth/login">Login</a>
+              <a href="/auth/register">Register</a>
+            {{/if}}
+        </ul>
+
+          </div>
+
+      </nav>
+    </header>
+
+    <main class="main">
+      {{{body}}}
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>1853 Restaurant</h3>
+          <p>1 Great Duice Street <br />Manchester</p>
+        </div>
+        <div class="footer-section">
+          <h3>Hours</h3>
+          <p>Tuesday - Sunday<br />5:00 PM - 11:00 PM</p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>Tel: (+44) 123-4567-890<br />Email: info@1853restaurant.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 1853 Restaurant. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html> --}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+ <link href="/css/style2.css" rel="stylesheet">
+
+ 
+</head>
+<body>
+  {{> navbar}}
+
+  <main>
+    {{> messages}}
+    {{{body}}}
+  </main>
+
+  {{> footer}}
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/javascript/script.js"></script>
+</body>
+</html>

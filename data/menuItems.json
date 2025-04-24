@@ -1,0 +1,127 @@
+{
+  "title": "Our Menu - 1853 Restaurant",
+  "categories": [
+    {
+      "name": "Aperitif",
+      "items": [
+        { 
+          "name": "Elderflower and Cucumber Gin Fizz", 
+          "description": "Kent Gin, Elderflower Cordial, Cucumber Essence, English Sparkling Water",
+          "price": "12",
+          "wine": "Chapel Down Brut Reserve NV, Kent"
+        }
+      ]
+    },
+    {
+      "name": "Amuse-Bouche",
+      "items": [
+        { 
+          "name": "Isle of Wight Tomato Consommé", 
+          "description": "British Caviar, Lovage Oil",
+          "price": "10",
+          "wine": "Nyetimber Classic Cuvée, West Sussex"
+        }
+      ]
+    },
+    {
+      "name": "Starters",
+      "items": [
+        { 
+          "name": "Heritage Beetroot Tartare", 
+          "description": "Salt-Baked Beetroot, Whipped Goat's Curd, Pickled Blackberries, Toasted Hazelnuts, Nasturtium",
+          "price": "18",
+          "wine": "Gusbourne Guinevere Chardonnay, Kent"
+        },
+        { 
+          "name": "Hand-Dived Orkney Scallops", 
+          "description": "Cauliflower Textures, Black Pudding Crumb, Apple, Brown Butter Emulsion",
+          "price": "24",
+          "wine": "Bacchus Reserve, Chapel Down, Kent"
+        },
+        { 
+          "name": "Cornish Crab Tian", 
+          "description": "Brown Crab Custard, Apple Jelly, Cucumber, Dill Oil, Sourdough Crisp",
+          "price": "22",
+          "wine": "Camel Valley Bacchus Dry, Cornwall"
+        }
+      ]
+    },
+    {
+      "name": "Main Courses",
+      "items": [
+        { 
+          "name": "Lake District Lamb Three Ways", 
+          "description": "Herb-Crusted Rack, Slow-Cooked Shoulder, Crispy Sweetbread, Heritage Carrots, Smoked Garlic Purée, Rosemary Jus",
+          "price": "42",
+          "wine": "Bolney Estate Pinot Noir, Sussex"
+        },
+        { 
+          "name": "Cornish Turbot", 
+          "description": "Braised Leeks, Sea Herbs, Morecambe Bay Shrimps, Champagne Beurre Blanc",
+          "price": "38",
+          "wine": "Lyme Bay Shoreline, Devon"
+        },
+        { 
+          "name": "Cumbrian Beef Wellington", 
+          "description": "35-Day Aged Fillet, Wild Mushroom Duxelles, Wiltshire Truffle, Fondant Potato, Charred Onions, Red Wine Reduction",
+          "price": "48",
+          "wine": "Denbies Cubitt Reserve, Surrey"
+        },
+        { 
+          "name": "Seasonal Vegetable Garden", 
+          "description": "Salt-Baked Celeriac, Heirloom Vegetables, Smoked Almond Cream, Herb Emulsion, Nasturtium",
+          "price": "32",
+          "wine": "Stopham Estate Pinot Blanc, West Sussex"
+        }
+      ]
+    },
+    {
+      "name": "Palate Cleanser",
+      "items": [
+        { 
+          "name": "Kentish Pear Sorbet", 
+          "description": "Meadowsweet Foam",
+          "price": "8"
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        { 
+          "name": "Caramelized Bramley Apple Tarte Tatin", 
+          "description": "Clotted Cream Ice Cream, Somerset Cider Reduction",
+          "price": "16",
+          "wine": "Royal Tokaji Late Harvest, Hungary"
+        },
+        { 
+          "name": "Dark Chocolate Delice", 
+          "description": "Salted Caramel, Maldon Sea Salt, Milk Ice Cream, Gold Leaf",
+          "price": "18",
+          "wine": "Nyetimber Demi-Sec, West Sussex"
+        },
+        { 
+          "name": "British Cheese Selection", 
+          "description": "Stilton, Montgomery Cheddar, Tunworth, Ragstone Goat's Cheese, Homemade Chutneys, Peter's Yard Crackers",
+          "price": "22",
+          "wine": "Camel Valley Pinot Noir Brut, Cornwall"
+        }
+      ]
+    },
+    {
+      "name": "Petit Fours",
+      "items": [
+        { 
+          "name": "Chef's Selection", 
+          "description": "Earl Grey Chocolate Truffles, Blackcurrant Pâte de Fruit, Whisky & Honey Macarons",
+          "price": "12"
+        }
+      ]
+    }
+  ],
+  "tasting_menu": {
+    "price": "135",
+    "wine_pairing": "95",
+    "description": "Our menu celebrates the finest seasonal British produce, with ingredients sourced from local farms, coastal waters, and artisanal producers across the British Isles."
+  }
+}
