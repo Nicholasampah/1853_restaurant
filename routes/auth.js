@@ -158,9 +158,7 @@ router.post('/forgot-password', ensureGuest, [
       return res.redirect('/auth/login');
     }
 
-    // TODO: Implement password reset token logic
-    // This would create a token, save it to the database with an expiry time,
-    // and send an email with a reset link
+   
     
     req.flash('success_msg', 'If your email is registered, you will receive password reset instructions');
     res.redirect('/auth/login');
